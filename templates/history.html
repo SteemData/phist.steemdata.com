@@ -6,22 +6,31 @@
 </head>
 <body>
 <div class="container text-center">
-
-    <br>
-    <br>
     <br>
     <form class="form-inline" action="history" method="get">
-        <h3 class="text-muted">Check history of a STEEM Post</h3>
         <div class="form-group">
             <input class="form-control input-lg" name="identifier" placeholder="@user/identifier" type="text">
         </div>
         <button type="submit" class="btn btn-lg" value="Go">Go</button>
     </form>
+    <hr>
+</div>
 
+<div class="container">
+    <h3>Original Post</h3>
+    {{ original|markdown }}
     <br>
+    <hr>
+
+    <h3>Revisions</h3>
+    {% for diff in diffs %}
+        {{ diff|safe }}
+        <br>
+    {% endfor %}
     <p class="text-muted">
-        Powered by <a href="https://steemdata.com">SteemData</a>
+        This app is powered by <a href="https://steemdata.com">SteemData</a> ∙ Built by <a href="https://steemit.com/@furion">@furion</a>
     </p>
+    <br>
 </div>
 
 <script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
