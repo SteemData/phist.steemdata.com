@@ -1,0 +1,15 @@
+version: "2.0"
+services:
+  web:
+    build: .
+    ports:
+    - "5000:5000"
+    volumes:
+    - logvolume01:/var/log
+    environment:
+      - PRODUCTION=true
+      - "FLASK_HOST=0.0.0.0"
+      - UNLOCK=foo
+volumes:
+  logvolume01: {}
+
