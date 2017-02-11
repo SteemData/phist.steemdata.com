@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>History for {{ identifier }}</title>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
+          rel="stylesheet">
+    <link href="/static/css/post.css"
           rel="stylesheet">
 </head>
 <body>
@@ -17,8 +20,11 @@
 </div>
 
 <div class="container">
+
     <h3>Original Post</h3>
-    {{ original|markdown }}
+    <span class="Post">
+           {{ original|markdown }}
+    </span>
     <br>
     <hr>
 
@@ -27,6 +33,8 @@
         {{ diff|safe }}
         <br>
     {% endfor %}
+    <a href="https://steemit.com/p/{{ identifier }}">[see latest version of this post on steemit.com]</a>
+    <hr>
     <p class="text-muted">
         This app is powered by <a href="https://steemdata.com">SteemData</a> ∙ Built by <a href="https://steemit.com/@furion">@furion</a>
     </p>

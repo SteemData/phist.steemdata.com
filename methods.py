@@ -53,6 +53,5 @@ def recreate_body_diffs(comments):
     results = [full_versions[0]]
     for i, diff in enumerate(full_versions[1:]):
         results.append(ghdiff.diff(full_versions[i], diff).replace('\n', ''))
-        print(i)
 
     return first(results), list(rest(results))

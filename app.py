@@ -6,7 +6,7 @@ from flask import request
 from flask_misaka import Misaka
 from flask_pymongo import PyMongo
 
-from methods import comment_history, recreate_body_diffs
+from methods import comment_history, recreate_body_diffs, parse_identifier
 
 app = Flask(__name__)
 
@@ -29,7 +29,10 @@ def history():
     if not comments:
         abort(404)
     original, diffs = recreate_body_diffs(comments)
-    return render_template('history.html', original=original, diffs=diffs)
+    return render_template('history.html',
+                           identifier=parse_identifier(identifier_uri),
+                           original=original,
+                           diffs=diffs)
 
 
 @app.errorhandler(404)
