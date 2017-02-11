@@ -13,7 +13,12 @@ app = Flask(__name__)
 app.config['MONGO_URI'] = 'mongodb://steemit:steemit@mongo1.steemdata.com:27017/SteemData'
 
 mongo = PyMongo(app)
-Misaka(app)
+
+# enable markdown rendering
+md_features = ['autolink', 'fenced_code', 'underline', 'highlight', 'quote',
+               'math', 'superscript', 'tables', 'wrap']
+md_features = {x: True for x in md_features}
+Misaka(app, **md_features)
 
 
 @app.route('/')

@@ -29,14 +29,20 @@
     <hr>
 
     <h3>Revisions</h3>
-    {% for diff in diffs %}
-        {{ diff|safe }}
+    {% if diffs is defined and diffs|length > 0 %}
+        {% for diff in diffs %}
+            {{ diff|safe }}
+            <br>
+        {% endfor %}
+    {% else %}
+        This post has not been edited.
         <br>
-    {% endfor %}
+    {% endif %}
     <a href="https://steemit.com/p/{{ identifier }}">[see latest version of this post on steemit.com]</a>
     <hr>
     <p class="text-muted">
-        This app is powered by <a href="https://steemdata.com">SteemData</a> ∙ Built by <a href="https://steemit.com/@furion">@furion</a>
+        This app is powered by <a href="https://steemdata.com">SteemData</a> ∙ Built by <a
+            href="https://steemit.com/@furion">@furion</a>
     </p>
     <br>
 </div>
