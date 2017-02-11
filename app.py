@@ -1,7 +1,11 @@
 import os
 
-from flask import Flask
+from flask import Flask, abort
+from flask import render_template
+from flask import request
 from flask_pymongo import PyMongo
+
+from methods import comment_history
 
 app = Flask(__name__)
 
@@ -12,7 +16,21 @@ mongo = PyMongo(app)
 
 @app.route('/')
 def hello_world():
-    return 'Hello World!'
+    return render_template('index.html')
+
+
+@app.route('/history', methods=['GET'])
+def history():
+    identifier_uri = request.args.get('identifier')
+    comments = comment_history(mongo.db, identifier_uri)
+    if not comments:
+        abort(404)
+    return render_template('index.html')
+
+
+@app.errorhandler(404)
+def page_not_found(error):
+    return render_template('404.html'), 404
 
 
 if __name__ == '__main__':

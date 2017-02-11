@@ -1,3 +1,5 @@
+steem
 flask
 Flask-PyMongo
 funcy
+diff_match_patch_python
