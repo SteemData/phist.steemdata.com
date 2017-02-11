@@ -1,5 +1,5 @@
 #!/bin/bash
 
-docker build -t steemdata-ph .
-docker tag steemdata-ph furion/steemdata-ph
-docker push furion/steemdata-ph
+docker build -t steemdata-phist .
+docker tag steemdata-phist furion/steemdata-phist
+docker push furion/steemdata-phist
