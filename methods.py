@@ -22,7 +22,6 @@ def get_comment_history(db, author, permlink):
         'account': author,
         'author': author,
         'type': 'comment',
-        # 'parent_author': '',
         'permlink': permlink,
     }
     return list(db['AccountOperations'].find(conditions).sort('timestamp', 1))
