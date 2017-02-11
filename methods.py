@@ -35,8 +35,12 @@ def reverse_patch(body_diffs):
     original, *diffs = body_diffs
     full_versions = [original]
     for diff in diffs:
-        reverse = p.patch_apply(p.patch_fromText(diff), full_versions[-1])
-        full_versions.append(reverse[0])
+        try:
+            reverse = p.patch_apply(p.patch_fromText(diff), full_versions[-1])
+            full_versions.append(reverse[0])
+        except ValueError:
+            # some comments have their bodies overwritten completely, rather than diffed
+            full_versions.append(diff)
 
     return full_versions
 
