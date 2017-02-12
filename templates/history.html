@@ -12,7 +12,7 @@
     <br>
     <form class="form-inline" action="history" method="get">
         <div class="form-group">
-            <input class="form-control input-lg" name="identifier" placeholder="@user/permlink" type="text">
+            <input class="form-control input-lg" name="identifier" placeholder="steemit.com/@user/link" type="text">
         </div>
         <button type="submit" class="btn btn-lg" value="Go">Go</button>
     </form>
@@ -20,12 +20,14 @@
 </div>
 
 <div class="container">
+    <h4>Showing History for: <a href="https://steemit.com/p/{{ identifier }}">{{ identifier }}</a></h4>
+    <hr>
 
-    <h3>Original Post</h3>
+    <h3>Original Version</h3>
     <span class="Post">
            {{ original|markdown }}
     </span>
-    <br>
+
     <hr>
 
     <h3>Revisions</h3>
