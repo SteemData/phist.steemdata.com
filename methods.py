@@ -13,18 +13,17 @@ def comment_history(db, uri_or_identifier):
 
 
 def parse_identifier(uri):
-    if uri.find('@') > 0:
-        return '@%s' % uri.split('@')[-1]
+    return '@%s' % uri.split('@')[-1]
 
 
 def get_comment_history(db, author, permlink):
     conditions = {
-        'account': author,
+        # 'account': author,
         'author': author,
         'type': 'comment',
         'permlink': permlink,
     }
-    return list(db['AccountOperations'].find(conditions).sort('timestamp', 1))
+    return list(db['Operations'].find(conditions).sort('timestamp', 1))
 
 
 def reverse_patch(body_diffs):
