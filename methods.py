@@ -2,14 +2,14 @@ from contextlib import suppress
 
 import diff_match_patch
 import ghdiff
-from funcy import first, rest
-from steem.utils import resolveIdentifier
+from funcy.seqs import first, rest
+from steem.utils import resolve_identifier
 
 
 def comment_history(db, uri_or_identifier):
     with suppress(TypeError, ValueError):
         identifier = parse_identifier(uri_or_identifier)
-        return get_comment_history(db, *resolveIdentifier(identifier))
+        return get_comment_history(db, *resolve_identifier(identifier))
 
 
 def parse_identifier(uri):
