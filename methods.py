@@ -35,7 +35,7 @@ def get_comment_history(db, author, permlink):
 
 def reverse_patch(body_diffs):
     """ Take a diff_match_patch C++ library diffs, and re-create original full-body texts."""
-    p = diff_match_patch.diff()
+    p = diff_match_patch.diff_match_patch()
 
     original, *diffs = body_diffs
     full_versions = [original]
