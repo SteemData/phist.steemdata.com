@@ -1,9 +1,16 @@
+import diff_match_patch
+import re
 from contextlib import suppress
 
-import diff_match_patch
 import ghdiff
 from funcy.seqs import first, rest
-from steem.utils import resolve_identifier
+
+
+def resolve_identifier(identifier):
+    match = re.match("@?([\w\-\.]*)/([\w\-]*)", identifier)
+    if not hasattr(match, "group"):
+        raise ValueError("Invalid identifier")
+    return match.group(1), match.group(2)
 
 
 def comment_history(db, uri_or_identifier):
@@ -28,7 +35,7 @@ def get_comment_history(db, author, permlink):
 
 def reverse_patch(body_diffs):
     """ Take a diff_match_patch C++ library diffs, and re-create original full-body texts."""
-    p = diff_match_patch.diff_match_patch()
+    p = diff_match_patch.diff()
 
     original, *diffs = body_diffs
     full_versions = [original]

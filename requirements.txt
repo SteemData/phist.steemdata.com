@@ -1,7 +1,6 @@
-ghdiff
-steem
 flask
 Flask-PyMongo
 Flask-Misaka
 funcy
-diff_match_patch_python
+ghdiff
+diff_match_patch
